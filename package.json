@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.3.3",
+    "aos": "^2.3.4",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "remixicon": "^4.9.1",
+    "TagCloud": "^2.5.0",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {

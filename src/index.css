@@ -1,8 +1,211 @@
 @import "tailwindcss";
 
+/* ==========================================
+   STYLING & ANIMASI REDUP MODE GELAP (DARK)
+   ========================================== */
 
-@layer base{
-    body{
-        font-family: "Poppins", sans-serif;
-    }
+/* 1. Transisi smooth untuk perubahan background */
+html, body {
+  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  scroll-behavior: smooth !important;
+  overscroll-behavior-x: none;
+}
+
+/* 2. Saat Mode Gelap (html.dark) Aktif:
+      Redupkan radial-gradient (merah & ungu) secara halus menjadi warna gelap polos */
+html.dark, 
+html.dark body {
+  background-color: #08050e !important;
+  color: #ffffff;
+
+  /* HANYA menyisa grid tipis, radial-gradient merah & ungu diset transparent agar pudar */
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    radial-gradient(ellipse 65% 60% at 20% 60%, transparent 0%, transparent 70%),
+    radial-gradient(ellipse 70% 65% at 80% 30%, transparent 0%, transparent 70%) !important;
+  
+  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              background-image 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 3. Bikin kartu/container proyek & education tetap rapi saat mode gelap */
+html.dark .bg-purple-950\/20,
+html.dark .bg-purple-950\/30,
+html.dark .bg-purple-950\/40,
+html.dark .bg-purple-950\/50,
+html.dark .bg-purple-950\/60 {
+  background-color: rgba(20, 20, 25, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+
+/* ==========================================
+   DEFAULT BASE STYLE (LIGHT / NORMAL MODE)
+   ========================================== */
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    color: #ffffff;
+  }
+
+  /* Background Default (Mode Normal): Glow Merah & Ungu Nyala + Grid */
+  body {
+    background-color: #06020e;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      radial-gradient(ellipse 65% 60% at 20% 60%, rgba(225, 29, 72, 0.45) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 65% at 80% 30%, rgba(147, 51, 234, 0.5) 0%, transparent 70%);
+
+    background-size: 35px 35px, 35px 35px, 100% 100%, 100% 100%;
+    background-position: center top, center top, center top, center top;
+    background-repeat: repeat, repeat, no-repeat, no-repeat;
+    background-attachment: fixed;
+  }
+}
+
+/* ==========================================
+   BUTTONS & ANIMATION UTILITIES
+   ========================================== */
+
+/* Class Nama Dibuat Warna Putih Polos */
+.text-gradient-purple {
+  color: #ffffff !important;
+  background: none !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Gradient Tombol Utama */
+.btn-gradient-purple {
+  background: linear-gradient(135deg, #7600e4 0%, #7e22ce 100%) !important;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4) !important;
+  border: none;
+}
+
+.btn-gradient-purple:hover {
+  background: linear-gradient(135deg, #9333ea 0%, #6b21a8 100%) !important;
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.6) !important;
+}
+
+/* Style Tombol View Project */
+.btn-secondary-purple {
+  color: #d1d5db !important;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  background: rgba(18, 7, 34, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-purple:hover {
+  color: #ffffff !important;
+  border-color: rgba(168, 85, 247, 0.8);
+  background: rgba(168, 85, 247, 0.15);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+/* Custom Shiny Text Animation */
+@keyframes shiny-text {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shiny {
+  background: linear-gradient(
+    110deg,
+    #ffffff 30%,
+    #c084fc 45%,
+    #ffffff 50%,
+    #c084fc 55%,
+    #ffffff 70%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shiny-text 4s linear infinite;
+}
+
+/* Animasi Emoji Melambai */
+@keyframes wave-hand {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave-hand 2s infinite;
+}
+
+/* ==========================================
+   EFEK HOVER & ANIMASI CARD/BLOK (LIGHT & DARK)
+   ========================================== */
+
+/* 1. Transisi dasar untuk semua kartu/blok */
+[class*="rounded-xl"],
+[class*="rounded-2xl"],
+[class*="bg-purple-950"],
+.border {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease !important;
+  will-change: transform;
+}
+
+/* 2. EFEK MENONJOL (MODE TERANG & GELAP) */
+/* Kartu sedikit terangkat ke atas (-4px) & membesar tipis (scale 1.015) */
+[class*="rounded-xl"]:hover,
+[class*="rounded-2xl"]:hover,
+[class*="bg-purple-950"]:hover {
+  transform: translateY(-5px) scale(1.015);
+}
+
+/* 3. Sorotan Putih & Glow saat MODE GELAP saja */
+html.dark [class*="rounded-xl"]:hover,
+html.dark [class*="rounded-2xl"]:hover,
+html.dark [class*="bg-purple-950"]:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.08), 
+              0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 4. Shadow bayangan di MODE TERANG saat menonjol */
+html:not(.dark) [class*="rounded-xl"]:hover,
+html:not(.dark) [class*="rounded-2xl"]:hover,
+html:not(.dark) [class*="bg-purple-950"]:hover {
+  box-shadow: 0 12px 24px -6px rgba(147, 51, 234, 0.25) !important;
+}
+
+/* Custom AOS Fade Out & Shrink Transition */
+[data-aos] {
+  transition-property: transform, opacity !important;
+  transition-duration: 0.8s !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+[data-aos].aos-animate {
+  transform: translateY(0) scale(1) !important;
+  opacity: 1 !important;
+}
+
+[data-aos]:not(.aos-animate) {
+  transform: translateY(40px) scale(0.95) !important;
+  opacity: 0 !important;
 }
