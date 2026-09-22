@@ -207,7 +207,7 @@ const socialLinks = [
     name: "LinkedIn",
     handle: "Ariel Bryan",
     icon: "ri-linkedin-fill",
-    url: "https://www.linkedin.com/in/ariel-bryan/",
+    url: "https://www.linkedin.com/in/ariel-bryannn/",
     color: "hover:bg-blue-950/40 hover:text-blue-400 hover:border-blue-500/50"
   },
   {
