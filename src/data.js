@@ -15,6 +15,9 @@ import Tools7 from "/assets/tools/nodejs.png";
 import Tools8 from "/assets/tools/github.png";
 import Tools10 from "/assets/tools/canva.png";
 import Tools11 from "/assets/tools/figma.png";
+// Import logo lokal GNS3 dan PnetLab dari folder assets
+import ToolsGNS3 from "./assets/GNS3_logo.png";
+import ToolsPnetLab from "./assets/pnetlab.png";
 
 export const listTools = [
   // Programming & Development
@@ -116,12 +119,36 @@ export const listTools = [
     kategori: "Networking & Infrastructure",
     dad: "1400",
   },
+  {
+    id: 24,
+    gambar: ToolsGNS3,
+    nama: "GNS3",
+    ket: "Network Simulation",
+    kategori: "Networking & Infrastructure",
+    dad: "1450",
+  },
+  {
+    id: 25,
+    gambar: ToolsPnetLab,
+    nama: "PnetLab",
+    ket: "Network Emulator",
+    kategori: "Networking & Infrastructure",
+    dad: "1470",
+  },
+  {
+    id: 26,
+    gambar: "https://api.iconify.design/simple-icons:wireshark.svg?color=%23ffffff",
+    nama: "Wireshark",
+    ket: "Network Analyzer",
+    kategori: "Networking & Infrastructure",
+    dad: "1480",
+  },
 
   // Embedded System & IoT
   {
     id: 16,
     gambar: "https://api.iconify.design/simple-icons:arduino.svg?color=%2300979D",
-    nama: "Arduino IDE",
+    nama: "Arduino",
     ket: "Embedded Development",
     kategori: "Embedded System & IoT",
     dad: "1600",
@@ -137,13 +164,13 @@ export const listTools = [
   {
     id: 20,
     gambar: "https://api.iconify.design/material-symbols:developer-board.svg?color=%2300b4d8",
-    nama: "Wemos D1 R1",
+    nama: "Wemos",
     ket: "WiFi IoT Board",
     kategori: "Embedded System & IoT",
     dad: "1800",
   },
 
-  // Cloud & DevOps (Ditambahkan AWS, Docker, Git, Linux)
+  // Cloud & DevOps
   {
     id: 21,
     gambar: "https://api.iconify.design/logos:aws.svg",
@@ -172,7 +199,7 @@ export const listTools = [
   // Design & Creative
   {
     id: 9,
-    gambar: "/assets/tools/ai.png", // Atau gunakan path logo AI kamu
+    gambar: "/assets/tools/ai.png",
     nama: "Adobe Illustrator",
     ket: "Design App",
     kategori: "Design & Creative",
