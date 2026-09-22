@@ -404,7 +404,7 @@ function App() {
             {/* SOCIAL MEDIA HERO */}
             <div data-aos="fade-up" className="flex items-center gap-3 mb-6">
               <a 
-                href="https://www.linkedin.com/in/ariel-bryan/" 
+                href="https://www.linkedin.com/in/arielbryannn/" 
                 target="_blank" 
                 rel="noreferrer"
                 className="w-11 h-11 rounded-xl bg-purple-950/40 border border-purple-500/20 flex items-center justify-center text-purple-200 hover:text-blue-400 hover:bg-blue-950/40 hover:border-blue-500/50 hover:scale-110 transition duration-300 backdrop-blur-md shadow-lg shadow-purple-950/50"
