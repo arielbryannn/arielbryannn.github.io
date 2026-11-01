@@ -209,3 +209,42 @@ html:not(.dark) [class*="bg-purple-950"]:hover {
   transform: translateY(40px) scale(0.95) !important;
   opacity: 0 !important;
 }
+
+@keyframes borderGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Kelas untuk efek border cahaya putih berputar */
+.glow-menu-item {
+  position: relative;
+  border-radius: 9999px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.glow-menu-item::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent,
+    transparent,
+    transparent,
+    rgba(255, 255, 255, 0.9)
+  );
+  animation: borderGlow 3s linear infinite;
+  z-index: -2;
+}
+
+.glow-menu-item::after {
+  content: '';
+  position: absolute;
+  inset: 1.5px; /* Ketebalan garis cahaya */
+  background: #120a1f; /* Menyesuaikan warna dasar kapsul navbar kamu */
+  border-radius: 9999px;
+  z-index: -1;
+}

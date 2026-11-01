@@ -12,15 +12,9 @@ import emailjs from "@emailjs/browser";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import Lanyard from "./components/Lanyard";
-
-
 import ParticlesBackground from "./components/ParticlesBackground";
 
-
-
-// IMPORT LANYARD ID-CARD
-import { motion } from "framer-motion";
+import Lanyard from "./components/Lanyard";
 
 // IMPORT GAMBAR PROYEK EMBEDDED (Pakan Ikan)
 import Embedded1 from "./assets/embedded1.jpeg";

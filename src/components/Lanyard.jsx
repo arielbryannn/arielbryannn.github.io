@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, useTexture } from '@react-three/drei';
 import { Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
 import * as THREE from 'three';
-import HeroImage from '../assets/ariel.PNG'; // Memuat foto profil aslimu
+import CardDesignImage from '../assets/lanyard.png'; // Mengambil dari folder assets
 
 export default function Lanyard() {
   return (
@@ -35,10 +35,9 @@ function LanyardRopeAndCard() {
   const [dragged, setDragged] = useState(false);
   const vec = new THREE.Vector3();
 
-  // Memuat tekstur foto wajah kamu
-  const cardTexture = useTexture(HeroImage);
+  // Memuat tekstur gambar lanyard dari assets
+  const cardTexture = useTexture(CardDesignImage);
 
-  // Sambungan fisik tali (Rope & Spherical Joints)
   useSphericalJoint(fixedRef, j1, [[0, 0, 0], [0, 0.5, 0]]);
   useSphericalJoint(j1, j2, [[0, -0.5, 0], [0, 0.5, 0]]);
   useRopeJoint(j2, cardRef, [[0, -0.5, 0], [0, 2.3, 0], 1.2]);
@@ -56,10 +55,8 @@ function LanyardRopeAndCard() {
 
   return (
     <group position={[0, 2.5, 0]}>
-      {/* Titik Tali Paling Atas (Tergantung di atas) */}
       <RigidBody ref={fixedRef} type="fixed" position={[0, 1.5, 0]} />
 
-      {/* Segmen Tali 1 */}
       <RigidBody ref={j1} linearDamping={3} angularDamping={3} position={[0, 0.8, 0]}>
         <mesh>
           <cylinderGeometry args={[0.06, 0.06, 0.8, 16]} />
@@ -67,7 +64,6 @@ function LanyardRopeAndCard() {
         </mesh>
       </RigidBody>
 
-      {/* Segmen Tali 2 */}
       <RigidBody ref={j2} linearDamping={3} angularDamping={3} position={[0, 0, 0]}>
         <mesh>
           <cylinderGeometry args={[0.06, 0.06, 0.8, 16]} />
@@ -75,7 +71,6 @@ function LanyardRopeAndCard() {
         </mesh>
       </RigidBody>
 
-      {/* Kartu ID Utama Berisi Foto Kamu */}
       <RigidBody
         ref={cardRef}
         type={dragged ? 'kinematicPosition' : 'dynamic'}
@@ -96,19 +91,19 @@ function LanyardRopeAndCard() {
             setDragged(false);
           }}
         >
-          {/* Sisi Depan Kartu (Foto Wajah) */}
+          {/* Kartu ID Depan (Desain Lanyard Kamu) */}
           <mesh position={[0, 0, 0.04]}>
             <planeGeometry args={[3.2, 4.6]} />
             <meshBasicMaterial map={cardTexture} transparent={true} />
           </mesh>
 
-          {/* Bingkai / Badan Belakang Kartu */}
+          {/* Sisi Belakang Kartu */}
           <mesh castShadow receiveShadow>
             <boxGeometry args={[3.3, 4.7, 0.06]} />
             <meshStandardMaterial color="#140624" roughness={0.2} metalness={0.8} />
           </mesh>
 
-          {/* Besi Klip Pengait di Atas Kartu */}
+          {/* Klip Besi */}
           <mesh position={[0, 2.4, 0]}>
             <boxGeometry args={[0.8, 0.2, 0.1]} />
             <meshStandardMaterial color="#c0c0c0" metalness={0.9} roughness={0.1} />
