@@ -109,7 +109,7 @@ const Navbar = () => {
             onClick={(e) => handleNavClick(e, "home")}
             className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide cursor-pointer block text-left leading-none"
           >
-            My Portfolio
+            arielbryannn
           </a>
         </div>
 

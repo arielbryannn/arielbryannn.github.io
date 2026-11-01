@@ -12,6 +12,16 @@ import emailjs from "@emailjs/browser";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import Lanyard from "./components/Lanyard";
+
+
+import ParticlesBackground from "./components/ParticlesBackground";
+
+
+
+// IMPORT LANYARD ID-CARD
+import { motion } from "framer-motion";
+
 // IMPORT GAMBAR PROYEK EMBEDDED (Pakan Ikan)
 import Embedded1 from "./assets/embedded1.jpeg";
 import Embedded2 from "./assets/embedded2.jpeg";
@@ -383,7 +393,10 @@ function App() {
   const hasImages = currentProject.images && currentProject.images.length > 0;
 
   return (
-    <div className="bg-tech-purple w-full min-h-screen text-white overflow-x-hidden">
+    <div className="bg-tech-purple w-full min-h-screen text-white overflow-x-hidden relative">
+      {/* Efek Partikel Salju Putih di Background */}
+      <ParticlesBackground />
+
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
@@ -400,6 +413,12 @@ function App() {
                 <span className="animate-pulse text-purple-400 font-light ml-1">|</span>
               )}
             </h1>
+            
+              {/* Kolom 2: Tempat Foto / Lanyard (Biasanya ada di bawah atau sebelah kanan kode ini) */}
+          <div className="relative md:ml-auto w-full max-w-[430px] mx-auto">
+            {/* Di sinilah tempat foto profil atau komponen Lanyard kamu nanti dipasang! */}
+          </div>
+            
 
             {/* SOCIAL MEDIA HERO */}
             <div data-aos="fade-up" className="flex items-center gap-3 mb-6">
@@ -698,12 +717,14 @@ function App() {
 
         {/* PROJECT SECTION */}
         <div id="project" className="projects mt-32 py-10">
-          <h2 data-aos="fade-up" className="text-3xl font-bold mb-2 text-center text-gradient-purple">
-            Featured Projects
-          </h2>
-          <p data-aos="fade-up" className="text-base opacity-70 text-center mb-12">
-            Enjoy explore my projects!
-          </p>
+          <div className="text-center mb-12">
+            <h2 data-aos="fade-up" className="text-3xl font-bold mb-2 text-gradient-purple">
+              Featured Projects
+            </h2>
+            <p data-aos="fade-up" className="text-base opacity-70">
+              Explore my latest engineering and development works.
+            </p>
+          </div>
 
           <div 
             data-aos="zoom-in" 
@@ -712,57 +733,48 @@ function App() {
             onPointerUp={onPointerUp}
             onPointerCancel={() => { setTouchStart(null); setTouchEnd(null); }}
             onWheel={onWheel}
-            className="group relative bg-purple-950/30 border border-purple-500/30 backdrop-blur-xl rounded-3xl p-6 md:p-10 overflow-hidden shadow-2xl cursor-grab active:cursor-grabbing select-none"
+            className="group relative bg-purple-950/20 border border-purple-500/20 backdrop-blur-xl rounded-3xl p-6 md:p-10 shadow-2xl cursor-grab active:cursor-grabbing select-none transition-all duration-300 hover:border-purple-500/40"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-20">
               
-              {/* KOLOM KIRI: TAMPILAN GAMBAR ATAU TERMINAL */}
+              {/* KOLOM KIRI: PREVIEW GAMBAR (Clean Minimalist Card Layout dengan object-contain) */}
               <div className="lg:col-span-6 flex items-center justify-center">
-                
                 {hasImages ? (
-                  <div className="relative w-full max-w-[280px] sm:max-w-[310px] flex items-center justify-center">
+                  <div className="relative w-full max-w-[380px] sm:max-w-[420px] flex items-center justify-center">
                     
-                    {/* TOMBOL PANAH KIRI (Hanya muncul jika gambar > 1) */}
+                    {/* Tombol Navigasi Kiri */}
                     {currentProject.images.length > 1 && (
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           setActiveImageIndex((prev) => (prev === 0 ? currentProject.images.length - 1 : prev - 1));
                         }}
-                        className="absolute -left-5 sm:-left-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-purple-900 border border-purple-400/60 flex items-center justify-center text-purple-200 hover:bg-purple-700 hover:text-white hover:scale-110 transition duration-300 shadow-xl cursor-pointer z-30"
+                        className="absolute -left-4 sm:-left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-purple-900/80 border border-purple-500/40 flex items-center justify-center text-purple-200 hover:bg-purple-700 hover:text-white hover:scale-105 transition duration-300 shadow-lg cursor-pointer z-30 backdrop-blur-md"
                         aria-label="Previous image"
                       >
                         <i className="ri-arrow-left-s-line text-2xl"></i>
                       </button>
                     )}
 
-                    {/* KOTAK MOCKUP UTAMA - 1 BINGKAI UTUH */}
-                    <div className="w-full bg-purple-900/40 border border-purple-500/20 rounded-2xl overflow-hidden shadow-inner flex flex-col h-[340px] sm:h-[370px]">
-                      <div className="relative flex items-center justify-between px-4 py-3 bg-purple-900/40 border-b border-purple-500/20">
-                        <div className="flex items-center gap-2 shrink-0 z-10">
-                          <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                          <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                          <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-                        </div>
-                        <div className="absolute inset-x-16 text-center pointer-events-none">
-                          <span className="text-[11px] sm:text-xs text-gray-400 font-mono truncate block px-2">
-                            {currentProject.mockupTitle} {currentProject.images.length > 1 ? `(Photo ${activeImageIndex + 1}/${currentProject.images.length})` : ""}
-                          </span>
-                        </div>
-                        <div className="w-10 shrink-0"></div>
-                      </div>
-
-                      {/* IMAGE CONTAINER TRANSPARAN DAN FULL COVER */}
-                      <div className="relative flex-1 bg-transparent flex items-center justify-center overflow-hidden">
+                    {/* Container Gambar Utama */}
+                    <div className="w-full bg-purple-900/10 border border-purple-500/20 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[320px] sm:h-[360px] relative group/img">
+                      <div className="relative flex-1 bg-black/60 flex items-center justify-center overflow-hidden p-2">
                         <img 
                           src={currentProject.images[activeImageIndex]} 
                           alt="Project Preview" 
-                          className="w-full h-full object-cover transition-all duration-500 ease-in-out"
+                          className="w-full h-full object-contain transition-all duration-700 ease-out group-hover/img:scale-105"
                         />
 
-                        {/* INDIKATOR DOTS DI BAWAH GAMBAR (Hanya jika > 1 gambar) */}
+                        {/* Indikator Counter Pojok Kanan Atas */}
                         {currentProject.images.length > 1 && (
-                          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-purple-950/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-purple-500/30 z-10">
+                          <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 text-[11px] text-gray-300 font-mono z-10">
+                            {activeImageIndex + 1} / {currentProject.images.length}
+                          </div>
+                        )}
+
+                        {/* Indikator Dots Minimalis di Bawah */}
+                        {currentProject.images.length > 1 && (
+                          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-purple-950/70 backdrop-blur-md px-3 py-1.5 rounded-full border border-purple-500/30 z-10">
                             {currentProject.images.map((_, dotIdx) => (
                               <button
                                 key={dotIdx}
@@ -770,8 +782,8 @@ function App() {
                                   e.stopPropagation();
                                   setActiveImageIndex(dotIdx);
                                 }}
-                                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                                  activeImageIndex === dotIdx ? "w-6 bg-cyan-400" : "w-2 bg-purple-400/50 hover:bg-purple-200"
+                                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                                  activeImageIndex === dotIdx ? "w-5 bg-cyan-400" : "w-1.5 bg-purple-400/50 hover:bg-purple-200"
                                 }`}
                                 aria-label={`Go to slide ${dotIdx + 1}`}
                               />
@@ -781,14 +793,14 @@ function App() {
                       </div>
                     </div>
 
-                    {/* TOMBOL PANAH KANAN (Hanya muncul jika gambar > 1) */}
+                    {/* Tombol Navigasi Kanan */}
                     {currentProject.images.length > 1 && (
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           setActiveImageIndex((prev) => (prev === currentProject.images.length - 1 ? 0 : prev + 1));
                         }}
-                        className="absolute -right-5 sm:-right-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-purple-900 border border-purple-400/60 flex items-center justify-center text-purple-200 hover:bg-purple-700 hover:text-white hover:scale-110 transition duration-300 shadow-xl cursor-pointer z-30"
+                        className="absolute -right-4 sm:-right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-purple-900/80 border border-purple-500/40 flex items-center justify-center text-purple-200 hover:bg-purple-700 hover:text-white hover:scale-105 transition duration-300 shadow-lg cursor-pointer z-30 backdrop-blur-md"
                         aria-label="Next image"
                       >
                         <i className="ri-arrow-right-s-line text-2xl"></i>
@@ -797,106 +809,75 @@ function App() {
 
                   </div>
                 ) : (
-                  <div className="w-full flex items-center gap-4">
-                    <div className="hidden sm:flex flex-col items-center justify-center h-[320px] sm:h-[380px] py-4">
-                      <div className="relative w-[2px] h-full bg-purple-500/35 rounded-full flex items-center justify-center">
-                        <div 
-                          className="absolute w-3 h-3 bg-purple-950 border-2 border-cyan-400 rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)] transition-all duration-75 ease-out"
-                          style={{ top: `${scrollProgress}%`, transform: 'translateY(-50%)' }}
-                        ></div>
+                  // Fallback Terminal Minimalis
+                  <div className="w-full flex-1 bg-purple-950/60 border border-purple-500/20 rounded-2xl overflow-hidden shadow-inner flex flex-col h-[320px] sm:h-[360px]">
+                    <div className="flex items-center justify-between px-4 py-3 bg-purple-900/30 border-b border-purple-500/20">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                       </div>
+                      <span className="text-xs text-gray-400 font-mono">{currentProject.mockupTitle}</span>
+                      <div className="w-6"></div>
                     </div>
-
-                    <div className="flex-1 bg-purple-950/60 border border-purple-500/20 rounded-2xl overflow-hidden shadow-inner flex flex-col h-[320px] sm:h-[380px]">
-                      <div className="relative flex items-center justify-between px-4 py-3 bg-purple-900/40 border-b border-purple-500/20">
-                        <div className="flex items-center gap-2 shrink-0 z-10">
-                          <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                          <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                          <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-                        </div>
-                        <div className="absolute inset-x-16 text-center pointer-events-none">
-                          <span className="text-[11px] sm:text-xs text-gray-400 font-mono truncate block px-2">
-                            {currentProject.mockupTitle}
-                          </span>
-                        </div>
-                        <div className="w-10 shrink-0"></div>
-                      </div>
-                      <div 
-                        ref={terminalRef}
-                        onScroll={handleScroll}
-                        className="p-4 sm:p-6 overflow-y-auto flex-1 font-mono text-xs sm:text-sm text-cyan-300 bg-black/40 text-left [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-                      >
-                        <div className="flex items-center gap-2 text-gray-400 mb-3 pb-2 border-b border-purple-500/10">
-                          <i className="ri-terminal-box-line text-cyan-400 text-lg"></i>
-                          <span>Terminal - project_env@ariel:~</span>
-                        </div>
-                        <pre className="whitespace-pre-wrap leading-relaxed text-purple-200">
-                          {currentProject.mockupCode}
-                        </pre>
-                        <div className="mt-4 flex items-center gap-2 text-cyan-400 animate-pulse">
-                          <span>$</span>
-                          <span className="w-2 h-4 bg-cyan-400 inline-block"></span>
-                        </div>
-                      </div>
+                    <div 
+                      ref={terminalRef}
+                      onScroll={handleScroll}
+                      className="p-4 overflow-y-auto flex-1 font-mono text-xs sm:text-sm text-cyan-300 bg-black/40 text-left"
+                    >
+                      <pre className="whitespace-pre-wrap leading-relaxed text-purple-200">
+                        {currentProject.mockupCode}
+                      </pre>
                     </div>
                   </div>
                 )}
-
               </div>
 
-              {/* KOLOM KANAN */}
+              {/* KOLOM KANAN: DETAIL INFORMASI PROYEK */}
               <div className="lg:col-span-6 flex flex-col justify-between text-left">
                 
-                <div className="flex items-center gap-3 mb-6">
-                  {projectsData.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveProject(idx)}
-                      className={`h-3 rounded-full transition-all duration-300 cursor-pointer ${
-                        activeProject === idx 
-                          ? "w-10 bg-gradient-to-r from-purple-500 to-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]" 
-                          : "w-3 bg-purple-900/60 hover:bg-purple-700 border border-purple-500/20"
-                      }`}
-                      aria-label={`Go to project ${idx + 1}`}
-                    />
-                  ))}
-                  <span className="text-xs font-mono text-gray-400 ml-2">0{activeProject + 1} / 0{projectsData.length}</span>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2 text-purple-300 text-xs sm:text-sm font-semibold bg-purple-900/30 border border-purple-500/30 px-3 py-1 rounded-lg">
+                    <i className={`${currentProject.icon} text-cyan-400 text-base`}></i>
+                    <span>{currentProject.subtitle}</span>
+                  </div>
+                  
+                  {/* Indikator Nomor Urut Proyek */}
+                  <span className="text-xs font-mono text-gray-400 tracking-wider">
+                    0{activeProject + 1} <span className="opacity-40">/</span> 0{projectsData.length}
+                  </span>
                 </div>
 
                 <div>
-                  <div className="flex items-center gap-2 text-purple-300 text-sm font-semibold mb-2">
-                    <i className={`${currentProject.icon} text-cyan-400 text-lg`}></i>
-                    <span>{currentProject.subtitle}</span>
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">
                     {currentProject.title}
                   </h3>
-                  <p className="text-gray-100 text-sm sm:text-base leading-relaxed mb-6 font-medium">
+                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6 font-normal opacity-90">
                     {currentProject.description}
                   </p>
                 </div>
 
                 <div>
+                  {/* Tech Stack Tags */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {currentProject.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="bg-cyan-950/40 border border-cyan-500/20 text-cyan-200 px-3 py-1 rounded-lg text-xs font-medium">
+                      <span key={tIdx} className="bg-cyan-950/30 border border-cyan-500/20 text-cyan-200 px-3 py-1 rounded-md text-xs font-medium">
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-4">
-                    {/* Tombol Code */}
+                  {/* Action Buttons */}
+                  <div className="flex items-center gap-3">
                     <a 
                       href={currentProject.codeLink} 
                       target="_blank" 
                       rel="noreferrer"
-                      className="btn-gradient-purple px-5 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2 transition duration-300 shadow-lg"
+                      className="btn-gradient-purple px-5 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2 transition duration-300 shadow-md"
                     >
-                      <i className="ri-github-fill text-lg"></i> Code
+                      <i className="ri-github-fill text-lg"></i> Code Repo
                     </a>
 
-                    {/* Tombol Live (Hanya dirender jika liveLink terisi) */}
                     {currentProject.liveLink && (
                       <a 
                         href={currentProject.liveLink} 
@@ -904,16 +885,31 @@ function App() {
                         rel="noreferrer"
                         className="btn-secondary-purple px-5 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2 transition duration-300"
                       >
-                        <i className="ri-global-line text-lg text-cyan-400"></i> Live
+                        <i className="ri-global-line text-lg text-cyan-400"></i> Live Demo
                       </a>
                     )}
                   </div>
                 </div>
 
+                {/* Navigasi Titik Bawah Antar Proyek */}
+                <div className="flex items-center gap-2 mt-8 pt-4 border-t border-purple-500/10">
+                  {projectsData.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveProject(idx)}
+                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                        activeProject === idx 
+                          ? "w-8 bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]" 
+                          : "w-2 bg-purple-900/60 hover:bg-purple-700"
+                      }`}
+                      aria-label={`Go to project ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+
               </div>
 
             </div>
-
           </div>
         </div>
 
