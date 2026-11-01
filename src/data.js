@@ -1,4 +1,4 @@
-import HeroImage from "/assets/hero-img.webp";
+import HeroImage from "./assets/ariel.PNG";
 
 const Image = {
   HeroImage,
@@ -6,24 +6,11 @@ const Image = {
 
 export default Image;
 
-import Tools1 from "/assets/tools/vscode.png";
-import Tools2 from "/assets/tools/reactjs.png";
-import Tools3 from "/assets/tools/nextjs.png";
-import Tools4 from "/assets/tools/tailwind.png";
-import Tools6 from "/assets/tools/js.png";
-import Tools7 from "/assets/tools/nodejs.png";
-import Tools8 from "/assets/tools/github.png";
-import Tools10 from "/assets/tools/canva.png";
-import Tools11 from "/assets/tools/figma.png";
-// Import logo lokal GNS3 dan PnetLab dari folder assets
-import ToolsGNS3 from "./assets/GNS3_logo.png";
-import ToolsPnetLab from "./assets/pnetlab.png";
-
 export const listTools = [
   // Programming & Development
   {
     id: 1,
-    gambar: Tools1,
+    gambar: "/assets/tools/vscode.png",
     nama: "Visual Studio Code",
     ket: "Code Editor",
     kategori: "Programming & Development",
@@ -31,7 +18,7 @@ export const listTools = [
   },
   {
     id: 2,
-    gambar: Tools2,
+    gambar: "/assets/tools/reactjs.png",
     nama: "React JS",
     ket: "Framework",
     kategori: "Programming & Development",
@@ -39,7 +26,7 @@ export const listTools = [
   },
   {
     id: 3,
-    gambar: Tools3,
+    gambar: "/assets/tools/nextjs.png",
     nama: "Next JS",
     ket: "Framework",
     kategori: "Programming & Development",
@@ -47,7 +34,7 @@ export const listTools = [
   },
   {
     id: 4,
-    gambar: Tools4,
+    gambar: "/assets/tools/tailwind.png",
     nama: "Tailwind CSS",
     ket: "CSS Framework",
     kategori: "Programming & Development",
@@ -63,7 +50,7 @@ export const listTools = [
   },
   {
     id: 6,
-    gambar: Tools6,
+    gambar: "/assets/tools/js.png",
     nama: "JavaScript",
     ket: "Programming Language",
     kategori: "Programming & Development",
@@ -71,7 +58,7 @@ export const listTools = [
   },
   {
     id: 7,
-    gambar: Tools7,
+    gambar: "/assets/tools/nodejs.png",
     nama: "Node JS",
     ket: "JavaScript Runtime",
     kategori: "Programming & Development",
@@ -79,7 +66,7 @@ export const listTools = [
   },
   {
     id: 8,
-    gambar: Tools8,
+    gambar: "/assets/tools/github.png",
     nama: "GitHub",
     ket: "Repository",
     kategori: "Programming & Development",
@@ -97,7 +84,7 @@ export const listTools = [
   // Networking & Infrastructure
   {
     id: 12,
-    gambar: "https://api.iconify.design/simple-icons:cisco.svg?color=%23ffffff",
+    gambar: "/assets/tools/cisco.png",
     nama: "Cisco Packet Tracer",
     ket: "Network Simulation",
     kategori: "Networking & Infrastructure",
@@ -105,7 +92,7 @@ export const listTools = [
   },
   {
     id: 13,
-    gambar: "https://api.iconify.design/logos:ubuntu.svg",
+    gambar: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg",
     nama: "Ubuntu",
     ket: "Operating System",
     kategori: "Networking & Infrastructure",
@@ -113,7 +100,7 @@ export const listTools = [
   },
   {
     id: 14,
-    gambar: "https://api.iconify.design/simple-icons:mikrotik.svg?color=%23ffffff",
+    gambar: "/assets/tools/mikotik.png",
     nama: "MikroTik",
     ket: "Network Operating System",
     kategori: "Networking & Infrastructure",
@@ -121,7 +108,7 @@ export const listTools = [
   },
   {
     id: 24,
-    gambar: ToolsGNS3,
+    gambar: "/assets/tools/gns3.png",
     nama: "GNS3",
     ket: "Network Simulation",
     kategori: "Networking & Infrastructure",
@@ -129,7 +116,7 @@ export const listTools = [
   },
   {
     id: 25,
-    gambar: ToolsPnetLab,
+    gambar: "/assets/tools/pnetlab.png",
     nama: "PnetLab",
     ket: "Network Emulator",
     kategori: "Networking & Infrastructure",
@@ -137,7 +124,7 @@ export const listTools = [
   },
   {
     id: 26,
-    gambar: "https://api.iconify.design/simple-icons:wireshark.svg?color=%23ffffff",
+    gambar: "/assets/tools/wiresharkcuy.png",
     nama: "Wireshark",
     ket: "Network Analyzer",
     kategori: "Networking & Infrastructure",
@@ -147,7 +134,7 @@ export const listTools = [
   // Embedded System & IoT
   {
     id: 16,
-    gambar: "https://api.iconify.design/simple-icons:arduino.svg?color=%2300979D",
+    gambar: "/assets/tools/arduino.png",
     nama: "Arduino",
     ket: "Embedded Development",
     kategori: "Embedded System & IoT",
@@ -155,7 +142,7 @@ export const listTools = [
   },
   {
     id: 17,
-    gambar: "https://api.iconify.design/simple-icons:espressif.svg?color=%23E7352C",
+    gambar: "/assets/tools/esp32y.png",
     nama: "ESP32",
     ket: "IoT Development",
     kategori: "Embedded System & IoT",
@@ -163,7 +150,7 @@ export const listTools = [
   },
   {
     id: 20,
-    gambar: "https://api.iconify.design/material-symbols:developer-board.svg?color=%2300b4d8",
+    gambar: "/assets/tools/wemos.png",
     nama: "Wemos",
     ket: "WiFi IoT Board",
     kategori: "Embedded System & IoT",
@@ -173,7 +160,7 @@ export const listTools = [
   // Cloud & DevOps
   {
     id: 21,
-    gambar: "https://api.iconify.design/logos:aws.svg",
+    gambar: "/assets/tools/aws.png",
     nama: "AWS",
     ket: "Cloud Computing",
     kategori: "Cloud & DevOps",
@@ -181,7 +168,7 @@ export const listTools = [
   },
   {
     id: 22,
-    gambar: "https://api.iconify.design/logos:docker-icon.svg",
+    gambar: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
     nama: "Docker",
     ket: "Container",
     kategori: "Cloud & DevOps",
@@ -189,7 +176,7 @@ export const listTools = [
   },
   {
     id: 23,
-    gambar: "https://api.iconify.design/logos:git-icon.svg",
+    gambar: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
     nama: "Git",
     ket: "Version Control",
     kategori: "Cloud & DevOps",
@@ -207,7 +194,7 @@ export const listTools = [
   },
   {
     id: 10,
-    gambar: Tools10,
+    gambar: "/assets/tools/canva.png",
     nama: "Canva",
     ket: "Design App",
     kategori: "Design & Creative",
@@ -215,7 +202,7 @@ export const listTools = [
   },
   {
     id: 11,
-    gambar: Tools11,
+    gambar: "/assets/tools/figma.png",
     nama: "Figma",
     ket: "UI/UX Design",
     kategori: "Design & Creative",
