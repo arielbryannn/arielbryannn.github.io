@@ -75,8 +75,8 @@ export default function Certificates() {
             onClick={() => setActiveTab("certificates")}
             className={`px-6 py-2.5 rounded-xl font-semibold text-sm transition duration-300 cursor-pointer flex items-center gap-2 ${
               activeTab === "certificates"
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-900/50"
-                : "bg-purple-950/30 border border-purple-500/20 text-gray-300 hover:bg-purple-900/40"
+                ? "bg-[#10b981] text-[#050505] shadow-lg shadow-emerald-950/50 font-bold"
+                : "bg-[#0f0f12]/75 border border-white/10 text-gray-300 hover:bg-white/5 hover:border-emerald-500/40"
             }`}
           >
             <i className="ri-award-line text-lg"></i> Certificates
@@ -86,8 +86,8 @@ export default function Certificates() {
             onClick={() => setActiveTab("awards")}
             className={`px-6 py-2.5 rounded-xl font-semibold text-sm transition duration-300 cursor-pointer flex items-center gap-2 ${
               activeTab === "awards"
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-900/50"
-                : "bg-purple-950/30 border border-purple-500/20 text-gray-300 hover:bg-purple-900/40"
+                ? "bg-[#10b981] text-[#050505] shadow-lg shadow-emerald-950/50 font-bold"
+                : "bg-[#0f0f12]/75 border border-white/10 text-gray-300 hover:bg-white/5 hover:border-emerald-500/40"
             }`}
           >
             <i className="ri-trophy-line text-lg"></i> Awards
@@ -104,12 +104,12 @@ export default function Certificates() {
                 key={item.id}
                 data-aos="zoom-in"
                 data-aos-delay={index * 50}
-                className="bg-purple-950/30 border border-purple-500/20 backdrop-blur-xl rounded-2xl p-5 flex flex-col justify-between hover:border-purple-500/50 transition duration-300"
+                className="bg-[#0f0f12]/75 border border-white/10 backdrop-blur-xl rounded-2xl p-5 flex flex-col justify-between hover:border-emerald-500/40 transition duration-300 shadow-xl"
               >
                 <div>
                   <div 
                     onClick={() => setSelectedImage(item.image)}
-                    className="rounded-xl overflow-hidden mb-4 bg-purple-900/20 border border-purple-500/10 h-48 cursor-pointer group relative"
+                    className="rounded-xl overflow-hidden mb-4 bg-black/40 border border-white/10 h-48 cursor-pointer group relative"
                   >
                     <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
@@ -117,12 +117,12 @@ export default function Certificates() {
                     </div>
                   </div>
                   <h3 className="text-lg font-bold text-white mb-1">{item.title}</h3>
-                  <p className="text-xs text-purple-300 mb-4">{item.issuer}</p>
+                  <p className="text-xs text-emerald-400 mb-4">{item.issuer}</p>
                 </div>
 
                 <button
                   onClick={() => setSelectedImage(item.image)}
-                  className="bg-purple-600 hover:bg-purple-500 text-white w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-2 transition duration-300 shadow-md cursor-pointer"
+                  className="bg-[#10b981] hover:bg-[#059669] text-[#050505] w-full py-2.5 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2 transition duration-300 shadow-md cursor-pointer"
                 >
                   Lihat Sertifikat <i className="ri-external-link-line"></i>
                 </button>
@@ -135,7 +135,7 @@ export default function Certificates() {
             <div className="text-center mt-10">
               <button
                 onClick={() => setShowAllCertificates(!showAllCertificates)}
-                className="px-8 py-3 rounded-xl bg-purple-950/60 border border-purple-500/40 text-purple-200 hover:bg-purple-900/50 hover:text-white font-semibold text-sm transition duration-300 cursor-pointer shadow-lg inline-flex items-center gap-2"
+                className="px-8 py-3 rounded-xl bg-[#0f0f12]/75 border border-white/10 text-gray-200 hover:border-emerald-500/40 hover:text-white font-semibold text-sm transition duration-300 cursor-pointer shadow-lg inline-flex items-center gap-2"
               >
                 <span>{showAllCertificates ? "Less More" : "See More"}</span>
                 <i className={`${showAllCertificates ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line"} text-lg`}></i>
@@ -152,32 +152,32 @@ export default function Certificates() {
             <div
               key={award.id}
               data-aos="fade-up"
-              className="relative overflow-hidden bg-gradient-to-b from-purple-950/50 to-purple-950/20 border border-purple-500/30 backdrop-blur-xl rounded-3xl p-6 sm:p-8 hover:border-purple-400/60 transition duration-500 shadow-xl shadow-purple-950/40 group"
+              className="relative overflow-hidden bg-[#0f0f12]/75 border border-white/10 backdrop-blur-xl rounded-3xl p-6 sm:p-8 hover:border-emerald-500/40 transition duration-500 shadow-xl group"
             >
               {/* Background Glow Effect di Pojok Kanan Atas Kartu */}
-              <div className="absolute -top-24 -right-24 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-500/30 transition duration-500"></div>
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-emerald-500/20 transition duration-500"></div>
 
               {/* Badge Highlight */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-semibold mb-4 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold mb-4 shadow-sm">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
                 <span>🏆 Highlight Achievement</span>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-purple-200 transition duration-300">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition duration-300">
                 {award.title}
               </h3>
               
-              {/* SUB-INFO LOGO & TEKS (UKURAN LOGO DIPERBESAR) */}
-              <div className="flex items-center gap-2.0 mb-4">
+              {/* SUB-INFO LOGO & TEKS */}
+              <div className="flex items-center gap-3 mb-6">
                 <img 
                   src={GunadarmaLogo} 
                   alt="Universitas Gunadarma" 
                   className="w-12 h-12 sm:w-14 sm:h-14 object-contain shrink-0" 
                 />
-                <p className="text-xs sm:text-sm text-purple-300 font-medium leading-snug">
+                <p className="text-xs sm:text-sm text-gray-300 font-medium leading-snug">
                   {award.issuer}
                 </p>
               </div>
@@ -190,7 +190,7 @@ export default function Certificates() {
                     data-aos="zoom-in"
                     data-aos-delay={idx * 100}
                     onClick={() => setSelectedImage(item.image)}
-                    className="h-60 rounded-2xl overflow-hidden bg-purple-900/20 border border-purple-500/20 cursor-pointer group/card relative shadow-lg hover:border-purple-400/80 hover:shadow-purple-900/40 transition-all duration-300"
+                    className="h-60 rounded-2xl overflow-hidden bg-black/40 border border-white/10 cursor-pointer group/card relative shadow-lg hover:border-emerald-500/40 transition-all duration-300"
                   >
                     <img
                       src={item.image}
@@ -201,8 +201,8 @@ export default function Certificates() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-80 group-hover/card:opacity-95 flex flex-col justify-end p-4 transition duration-300">
                       <span className="text-xs font-semibold text-white flex items-center justify-between">
                         <span>{item.name}</span>
-                        <span className="p-1.5 rounded-lg bg-purple-600/80 text-white group-hover/card:scale-110 transition duration-300">
-                          <i className="ri-zoom-in-line text-sm"></i>
+                        <span className="p-1.5 rounded-lg bg-[#10b981] text-[#050505] group-hover/card:scale-110 transition duration-300">
+                          <i className="ri-zoom-in-line text-sm font-bold"></i>
                         </span>
                       </span>
                     </div>

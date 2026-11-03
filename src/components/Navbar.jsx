@@ -96,7 +96,7 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         active
-          ? "bg-[#0c0714]/95 dark:bg-[#0b0712]/95 backdrop-blur-md border-b border-purple-500/10 py-3 shadow-lg shadow-purple-950/30"
+          ? "bg-[#050505]/90 backdrop-blur-md border-b border-white/10 py-3 shadow-xl shadow-black/50"
           : "bg-transparent py-5 border-b border-transparent"
       }`}
     >
@@ -122,12 +122,12 @@ const Navbar = () => {
               flex items-center
               /* Mobile Style */
               flex-col absolute top-[60px] left-0 w-full p-6 gap-2
-              bg-[#0c0714]/98 dark:bg-[#0b0712]/98 backdrop-blur-lg border-b border-purple-500/25
+              bg-[#0a0a0c]/98 backdrop-blur-lg border-b border-white/10
               transition-all duration-300 ease-in-out
               ${isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"}
 
               /* Desktop Style */
-              lg:flex-row lg:static lg:w-auto lg:p-1 lg:gap-0.5 lg:border lg:border-purple-500/30 lg:rounded-full lg:bg-[#120a1f]/80 lg:backdrop-blur-md lg:shadow-lg lg:opacity-100 lg:visible lg:translate-y-0
+              lg:flex-row lg:static lg:w-auto lg:p-1 lg:gap-1 lg:border lg:border-white/10 lg:rounded-full lg:bg-[#121216]/80 lg:backdrop-blur-md lg:shadow-lg lg:opacity-100 lg:visible lg:translate-y-0
             `}
           >
             {navLinks.map((link) => {
@@ -138,9 +138,9 @@ const Navbar = () => {
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.id)}
-                    className={`relative font-medium flex items-center justify-center py-3 lg:py-1.5 lg:px-3 cursor-pointer w-full lg:w-auto rounded-full ${
+                    className={`relative font-medium flex items-center justify-center py-3 lg:py-1.5 lg:px-3 cursor-pointer w-full lg:w-auto rounded-full transition-all duration-200 ${
                       isCurrentActive
-                        ? "lg:bg-purple-600/30 lg:border lg:border-purple-500/50 text-purple-200 text-purple-300"
+                        ? "lg:bg-emerald-500/20 lg:border lg:border-emerald-500/40 text-emerald-300"
                         : "text-gray-400 hover:text-white hover:bg-white/5"
                     } text-lg lg:text-xs xl:text-sm`}
                   >
@@ -148,9 +148,9 @@ const Navbar = () => {
                       <i className={`${link.icon} text-xl lg:text-sm`}></i>
                       <span>{link.name}</span>
 
-                      {/* GARIS BAWAH AKTIF */}
+                      {/* GARIS BAWAH AKTIF (Mobile) */}
                       {isCurrentActive && (
-                        <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-purple-500 rounded-full" />
+                        <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-emerald-400 rounded-full lg:hidden" />
                       )}
                     </span>
                   </a>
@@ -163,12 +163,12 @@ const Navbar = () => {
           <button
             onClick={toggleTheme}
             aria-label="Toggle Theme"
-            className="w-10 h-10 rounded-full bg-[#120a1f]/80 text-purple-300 flex items-center justify-center cursor-pointer focus:outline-none border border-purple-500/30 backdrop-blur-md shadow-lg overflow-hidden flex-shrink-0"
+            className="w-10 h-10 rounded-full bg-[#121216]/80 text-gray-300 flex items-center justify-center cursor-pointer focus:outline-none border border-white/10 backdrop-blur-md shadow-lg overflow-hidden flex-shrink-0 hover:border-white/30 transition"
           >
             {isDark ? (
               <i className="ri-sun-fill text-xl text-amber-400"></i>
             ) : (
-              <i className="ri-moon-line text-xl text-purple-300"></i>
+              <i className="ri-moon-line text-xl text-gray-300"></i>
             )}
           </button>
 

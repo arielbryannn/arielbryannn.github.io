@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 /* ==========================================
-   STYLING & ANIMASI REDUP MODE GELAP (DARK)
+   STYLING & ANIMASI MODE GELAP (OBSIDIAN & EMERALD)
    ========================================== */
 
-/* 1. Transisi smooth untuk perubahan background */
+/* Transisi smooth untuk perubahan tema dan scroll */
 html, body {
   transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
               color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -12,129 +12,86 @@ html, body {
   overscroll-behavior-x: none;
 }
 
-/* 2. Saat Mode Gelap (html.dark) Aktif:
-      Redupkan radial-gradient (merah & ungu) secara halus menjadi warna gelap polos */
-html.dark, 
-html.dark body {
-  background-color: #08050e !important;
-  color: #ffffff;
+/* Base Theme: Dark Obsidian dengan Aurora Hijau Emerald & Cyan */
+html, body, html.dark, html.dark body {
+  background-color: #050505 !important;
+  color: #ededed;
 
-  /* HANYA menyisa grid tipis, radial-gradient merah & ungu diset transparent agar pudar */
+  /* Gradasi Aurora Hijau (Emerald & Deep Teal) Halus + Grid Tipis */
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    radial-gradient(ellipse 65% 60% at 20% 60%, transparent 0%, transparent 70%),
-    radial-gradient(ellipse 70% 65% at 80% 30%, transparent 0%, transparent 70%) !important;
-  
-  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              background-image 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
+    radial-gradient(ellipse 65% 55% at 15% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 65% 55% at 85% 70%, rgba(6, 182, 212, 0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(5, 150, 105, 0.05) 0%, transparent 80%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px) !important;
 
-/* 3. Bikin kartu/container proyek & education tetap rapi saat mode gelap */
-html.dark .bg-purple-950\/20,
-html.dark .bg-purple-950\/30,
-html.dark .bg-purple-950\/40,
-html.dark .bg-purple-950\/50,
-html.dark .bg-purple-950\/60 {
-  background-color: rgba(20, 20, 25, 0.6) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-
-/* ==========================================
-   DEFAULT BASE STYLE (LIGHT / NORMAL MODE)
-   ========================================== */
-
-@layer base {
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh;
-    color: #ffffff;
-  }
-
-  /* Background Default (Mode Normal): Glow Merah & Ungu Nyala + Grid */
-  body {
-    background-color: #06020e;
-    background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      radial-gradient(ellipse 65% 60% at 20% 60%, rgba(225, 29, 72, 0.45) 0%, transparent 70%),
-      radial-gradient(ellipse 70% 65% at 80% 30%, rgba(147, 51, 234, 0.5) 0%, transparent 70%);
-
-    background-size: 35px 35px, 35px 35px, 100% 100%, 100% 100%;
-    background-position: center top, center top, center top, center top;
-    background-repeat: repeat, repeat, no-repeat, no-repeat;
-    background-attachment: fixed;
-  }
+  background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px !important;
+  background-attachment: fixed !important;
 }
 
 /* ==========================================
-   BUTTONS & ANIMATION UTILITIES
+   TOMBOL & EFEK SHINY TEKS
    ========================================== */
 
-/* Class Nama Dibuat Warna Putih Polos */
+/* Menghilangkan gradasi ungu pada judul/teks nama */
 .text-gradient-purple {
   color: #ffffff !important;
   background: none !important;
   -webkit-text-fill-color: #ffffff !important;
 }
 
-/* Gradient Tombol Utama */
+/* Tombol Utama (Emerald Green) */
 .btn-gradient-purple {
-  background: linear-gradient(135deg, #7600e4 0%, #7e22ce 100%) !important;
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4) !important;
+  background: #10b981 !important;
+  color: #050505 !important;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.25) !important;
   border: none;
+  font-weight: 600;
 }
 
 .btn-gradient-purple:hover {
-  background: linear-gradient(135deg, #9333ea 0%, #6b21a8 100%) !important;
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.6) !important;
+  background: #059669 !important;
+  box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4) !important;
 }
 
-/* Style Tombol View Project */
+/* Tombol Sekunder */
 .btn-secondary-purple {
-  color: #d1d5db !important;
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  background: rgba(18, 7, 34, 0.4);
+  color: #e4e4e7 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
   transition: all 0.3s ease;
 }
 
 .btn-secondary-purple:hover {
   color: #ffffff !important;
-  border-color: rgba(168, 85, 247, 0.8);
-  background: rgba(168, 85, 247, 0.15);
-  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  background: rgba(16, 185, 129, 0.08) !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1) !important;
 }
 
-/* Custom Shiny Text Animation */
+/* Shiny Text (Kilau Putih Murni Berjalan) */
 @keyframes shiny-text {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 .animate-shiny {
   background: linear-gradient(
     110deg,
     #ffffff 30%,
-    #c084fc 45%,
+    rgba(255, 255, 255, 0.4) 45%,
     #ffffff 50%,
-    #c084fc 55%,
+    rgba(255, 255, 255, 0.4) 55%,
     #ffffff 70%
   );
   background-size: 200% auto;
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  animation: shiny-text 4s linear infinite;
+  animation: shiny-text 3.5s linear infinite;
 }
 
-/* Animasi Emoji Melambai */
+/* Animasi Wave Hand */
 @keyframes wave-hand {
   0% { transform: rotate(0deg); }
   10% { transform: rotate(14deg); }
@@ -153,69 +110,84 @@ html.dark .bg-purple-950\/60 {
 }
 
 /* ==========================================
-   EFEK HOVER & ANIMASI CARD/BLOK (LIGHT & DARK)
+   PENIMPAAN WARNA UNGU KE EMERALD (OVERRIDE TAILWIND CLASS)
    ========================================== */
 
-/* 1. Transisi dasar untuk semua kartu/blok */
-[class*="rounded-xl"],
-[class*="rounded-2xl"],
+/* Menimpa semua elemen berbahan bg-purple-xxx menjadi Dark Obsidian */
+input[type="text"],
+input[type="email"],
+textarea,
 [class*="bg-purple-950"],
-.border {
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
-              background-color 0.3s ease, 
-              border-color 0.3s ease, 
-              box-shadow 0.3s ease !important;
-  will-change: transform;
+[class*="bg-purple-900"] {
+  background-color: rgba(15, 15, 18, 0.75) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* 2. EFEK MENONJOL (MODE TERANG & GELAP) */
-/* Kartu sedikit terangkat ke atas (-4px) & membesar tipis (scale 1.015) */
+/* Focus input form menggunakan warna Emerald */
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 1px #10b981 !important;
+}
+
+/* Menghilangkan sisa garis/shadow/border berwarna ungu */
+[class*="border-purple"],
+[class*="shadow-purple"],
+[class*="from-purple"],
+[class*="via-red"],
+[class*="to-purple"] {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  background-image: none !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Efek Hover untuk semua Card */
 [class*="rounded-xl"]:hover,
 [class*="rounded-2xl"]:hover,
-[class*="bg-purple-950"]:hover {
-  transform: translateY(-5px) scale(1.015);
+[class*="rounded-3xl"]:hover,
+[class*="bg-purple-950"]:hover,
+[class*="bg-purple-900"]:hover {
+  background-color: rgba(22, 22, 28, 0.85) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* 3. Sorotan Putih & Glow saat MODE GELAP saja */
-html.dark [class*="rounded-xl"]:hover,
-html.dark [class*="rounded-2xl"]:hover,
-html.dark [class*="bg-purple-950"]:hover {
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.08), 
-              0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+/* ==========================================
+   PERBAIKAN EXPERIENCE & KOTAK PROFIL
+   ========================================== */
+
+/* Merapikan jarak kanan tanggal di bagian Experience */
+#experience .flex.items-center.justify-between {
+  padding-right: 0.75rem !important;
 }
 
-/* 4. Shadow bayangan di MODE TERANG saat menonjol */
-html:not(.dark) [class*="rounded-xl"]:hover,
-html:not(.dark) [class*="rounded-2xl"]:hover,
-html:not(.dark) [class*="bg-purple-950"]:hover {
-  box-shadow: 0 12px 24px -6px rgba(147, 51, 234, 0.25) !important;
+/* Bingkai Foto Profil (Emerald Glow Halus) */
+.relative.rounded-\[2\.5rem\],
+.relative.rounded-3xl {
+  background: rgba(18, 18, 22, 0.75) !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.15), 0 20px 40px -15px rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(12px);
 }
 
-/* Custom AOS Fade Out & Shrink Transition */
-[data-aos] {
-  transition-property: transform, opacity !important;
-  transition-duration: 0.8s !important;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+.relative.rounded-\[2\.5rem\]:hover,
+.relative.rounded-3xl:hover {
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.25), 0 25px 50px -12px rgba(0, 0, 0, 0.9) !important;
 }
 
-[data-aos].aos-animate {
-  transform: translateY(0) scale(1) !important;
-  opacity: 1 !important;
-}
-
-[data-aos]:not(.aos-animate) {
-  transform: translateY(40px) scale(0.95) !important;
-  opacity: 0 !important;
-}
+/* ==========================================
+   NAVBAR GLOW EFFECT
+   ========================================== */
 
 @keyframes borderGlow {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* Kelas untuk efek border cahaya putih berputar */
 .glow-menu-item {
   position: relative;
   border-radius: 9999px;
@@ -234,7 +206,7 @@ html:not(.dark) [class*="bg-purple-950"]:hover {
     transparent,
     transparent,
     transparent,
-    rgba(255, 255, 255, 0.9)
+    rgba(16, 185, 129, 0.7)
   );
   animation: borderGlow 3s linear infinite;
   z-index: -2;
@@ -243,8 +215,30 @@ html:not(.dark) [class*="bg-purple-950"]:hover {
 .glow-menu-item::after {
   content: '';
   position: absolute;
-  inset: 1.5px; /* Ketebalan garis cahaya */
-  background: #120a1f; /* Menyesuaikan warna dasar kapsul navbar kamu */
+  inset: 1.5px;
+  background: #050505;
   border-radius: 9999px;
   z-index: -1;
 }
+
+/* ==========================================
+   ANIMASI CAHAYA BERJALAN (SHIMMER TEXT)
+   ========================================== */
+   @keyframes shimmerText {
+    0% {
+      color: #9ca3af; /* abu-abu redup */
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+    }
+    50% {
+      color: #ffffff; /* putih terang menyala */
+      text-shadow: 0 0 20px rgba(16, 185, 129, 0.8), 0 0 35px rgba(6, 182, 212, 0.6);
+    }
+    100% {
+      color: #9ca3af;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+    }
+  }
+  
+  .animate-shimmer-text {
+    animation: shimmerText 2s ease-in-out infinite;
+  }
